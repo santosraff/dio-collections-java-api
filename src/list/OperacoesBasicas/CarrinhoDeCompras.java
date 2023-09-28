@@ -19,7 +19,7 @@ public class CarrinhoDeCompras {
         List<Item> itensParaRemover = new ArrayList<>();
 
         if (!itemList.isEmpty()) {
-            for (Item i : itensParaRemover)
+            for (Item i : itemList)
                 if (i.getNome().equalsIgnoreCase(nome))
                     itensParaRemover.add(i);
             itemList.removeAll(itensParaRemover);
@@ -43,14 +43,26 @@ public class CarrinhoDeCompras {
 
     public void exibirItens() {
         if (!itemList.isEmpty()) {
-            System.out.println(this.itemList);
-          } else {
+            System.out.println(itemList);
+        } else {
             System.out.println("A lista está vazia!");
-          }
         }
+    }
 
-    @Override
-    public String toString() {
-        return "CarrinhoDeCompras [itemList = " + itemList + "]";
+    public static void main(String[] args) {
+        CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
+
+        carrinhoDeCompras.adicionarItem("Lápis", 2.0, 3);
+        carrinhoDeCompras.adicionarItem("Lápis", 2.0, 3);
+        carrinhoDeCompras.adicionarItem("Caderno", 35.0, 1);
+        carrinhoDeCompras.adicionarItem("Borracha", 2.0, 2);
+
+        carrinhoDeCompras.exibirItens();
+
+        carrinhoDeCompras.removerItem("Lápis");
+
+        carrinhoDeCompras.exibirItens();
+
+        System.out.println("O valor total da compra é = " + carrinhoDeCompras.calcularValorTotal());
     }
 }
